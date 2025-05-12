@@ -10,7 +10,10 @@
 </head>
 <body>
     <x-navbar/>
-    {{$slot}}
+
+    <div class="slot-custom">
+        {{$slot}}
+    </div>
     <x-footer/>
 </body>
 </html>

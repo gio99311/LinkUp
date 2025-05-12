@@ -1,12 +1,12 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-secondary-subtle text-center">
+    <div class="container-fluid p-5 text-center bg-color-a">
         <div class="row justify-content-center">
             <div class="col-12">
                 <h1 class="display-1">Accedi</h1>
             </div>
         </div>
     </div>
-    <div class="container my-5">
+    <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <form action="{{ route('login') }}" method="POST" class="card p-5 shadow">
@@ -26,7 +26,7 @@
                         @enderror
                     </div>
                     <div class="mb-3 d-flex justify-content-center flex-column aling-items-center">
-                        <button type="submit" class="btn btn-outline-secondary">Accedi</button>
+                        <button type="submit" class="button-64"><span class="text">Accedi</span></button>
                         <p class="mt-2">Non sei registrato? <a href="{{ route('register') }}" class="text-secondary">Clicca qui</a></p>
                     </div>
                 </form>

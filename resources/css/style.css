@@ -1,0 +1,84 @@
+:root{
+    --color-p: black;
+    --color-s: white;
+    --color-t: green;
+    --color-q: rgb(187, 112, 195);
+    --color-a: yellow;
+}
+.slot-custom{
+    width: 100%;
+    padding-top: 20vh;
+    background-color: var(--color-t);
+    min-height: 100vh;
+}
+.nav-custom{
+    background-color: white;
+    color: black;
+    height: fit-content;
+    width: 80%;
+    padding: 15px;
+    position: fixed;
+    top: 30px;
+    left: 10%;
+    border-radius: 30px;
+    border: 2px solid black;
+    z-index: 1;
+}
+
+.bg-color-a{
+    background-color: var(--color-a);
+}
+
+
+/* CSS */
+.button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg, var(--color-t), var(--color-a) 50%, var(--color-t));
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+  color: var(--color-p);
+}
+
+.button-64 span {
+  background-color: var(--color-p);
+  color: var(--color-s);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+  color: var(--color-p);
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
