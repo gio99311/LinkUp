@@ -20,24 +20,26 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $categories = [
-            'Instagram',
-            'Twitter',
-            'Linkedin',
-            'Youtube',
-            'Facebook',
-            'Tiktok',
-            'Spotify',
-            'Pinterest',
-            'Reddit',
-            'Snapchat',
-            'MyWebsite',
-            'Whatsapp',
-            'Github',
-            'Discord',
+            ['name' => 'Instagram' , 'icons' => 'instagram'],
+            ['name' => 'Twitter', 'icons' => 'twitter'],
+            ['name' => 'Linkedin', 'icons' => 'linkedin'],
+            ['name' => 'Youtube', 'icons' => 'youtube'],
+            ['name' => 'Facebook', 'icons' => 'facebook'],
+            ['name' => 'Tiktok', 'icons' => 'tiktok'],
+            ['name' => 'Spotify', 'icons' => 'spotify'],
+            ['name' => 'Pinterest', 'icons' => 'pinterest'],
+            ['name' => 'Reddit', 'icons' => 'reddit'],
+            ['name' => 'Snapchat', 'icons' => 'snapchat'],
+            ['name' => 'Whatsapp', 'icons' => 'whatsapp'],
+            ['name' =>  'Github', 'icons' => 'github'],
+            ['name' =>  'Discord', 'icons' => 'discord'],
+  
         ];
 
         foreach ($categories as $category) {
-                Category::create(['name' => $category,
+            Category::create([
+                'name' => $category['name'],
+                'icons' => $category['icons']
             ]);
         }
     }

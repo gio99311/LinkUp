@@ -3,11 +3,13 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Category;
 
 class Homepage extends Component
 {
     public function render()
     {
-        return view('livewire.homepage');
+        $categories = Category::all();
+        return view('livewire.homepage', compact('categories'));
     }
 }
