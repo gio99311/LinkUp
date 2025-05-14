@@ -1,13 +1,14 @@
 :root{
     --color-p: black;
-    --color-s: white;
-    --color-t: green;
-    --color-q: rgb(187, 112, 195);
-    --color-a: yellow;
+    --color-s: rgb(255, 255, 255);
+    --color-t: #A9E190;
+    --color-q: #DC6ACF;
+    --color-a: #ffff66;
+    --color-b: #98C1D9
 }
 .slot-custom{
     width: 100%;
-    padding-top: 20vh;
+    padding-top: 15vh;
     background-color: var(--color-t);
     min-height: 100vh;
 }
@@ -27,6 +28,40 @@
 
 .bg-color-a{
     background-color: var(--color-a);
+}
+
+.bg-color-q{
+    background-color: var(--color-q);
+}
+
+.bg-color-b{
+    background-color: var(--color-b);
+}
+
+
+.color-p{
+    color: var(--color-p);
+}
+
+.color-s{
+    color: var(--color-s);
+}
+
+.color-a{
+    color: var(--color-a);
+}
+
+.color-b{
+    color: var(--color-b);
+}
+
+.color-t{
+    color: var(--color-t);
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.color-q{
+    color: var(--color-q);
 }
 
 

@@ -10,15 +10,17 @@ use Illuminate\Support\Facades\Auth;
 class Homepage extends Component
 {
     public $username;
+
     public function updateUsername() {
         $user=User::find(Auth::id());
         if ($user->id == Auth::id()) {
             $user->update([
             'name'=>$this->username
             ]);
-            $user->save();
-            $this->reset();
         }
+        $user->save();
+        return redirect(route('homepage'))->with('message', 'Username modificato correttamente');
+        // $this->reset();
     }
     public $showInput=false;
     public function showInputs() {
