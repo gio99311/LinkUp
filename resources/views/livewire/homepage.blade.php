@@ -17,7 +17,42 @@
                         </button>
                     </div>
                 </form>
-                <form class="card p-5 shadow" wire:submit.prevent="{{$showInput ? 'saveInputs' : 'showInputs'}}">
+
+                <div class="card p-5 shadow">
+                    <div class="mb-3 d-flex justify-content-center">
+                        <div class="col-12">
+                                
+                            <div class="col-12 d-flex flex-wrap justify-content-around px-3">
+                                @foreach ($categories as $category)
+                                    <button type="button"
+                                            class="border-0 rounded-1 mb-3 mx-2 px-3 py-2"
+                                            wire:click="toggleInput({{ $category->id }})">
+                                        <i class="bi bi-{{ $category->icons }} color-q fs-4"></i>
+                                    </button>
+                                @endforeach
+                            </div>
+
+                            
+                            <div class="col-12 mt-4">
+                                @foreach ($categories as $category)
+                                    @if(!empty($visibleInputs[$category->id]))
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-auto">
+                                                <i class="bi bi-{{ $category->icons }} color-q fs-4"></i>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control"                                     placeholder="Inserisci il link per {{ $category->name }}" >
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                {{-- <form class="card p-5 shadow" wire:submit.prevent="{{$showInput ? 'saveInputs' : 'showInputs'}}">
                     <div class="mb-3 d-flex justify-content-center">
          
                         <div class="col-12 d-flex flex-wrap justify-content-around px-3">
@@ -36,20 +71,9 @@
                         <button type="submit" class="button-64"><span class="text">Aggiungi Link</span></button>
                     </div>
                     
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>  
-    
-    <script>
-        document.querySelectorAll('.icon-button').forEach(button => {
-            button.addEventListener('click', function () {
-                const wrapper = this.closest('.icon-wrapper');
-                const input = wrapper.querySelector('.link-input');
-                input.classList.toggle('d-none');
-                input.focus();
-            });
-        });
-    </script>
 
 </div>

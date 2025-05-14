@@ -11,6 +11,18 @@ class Homepage extends Component
 {
     public $username;
 
+    public $visibleInputs = []; // array per gestire visibilità degli input
+
+    public function mount()
+    {
+        $this->visibleInputs = []; 
+    }
+
+    public function toggleInput($categoryId)
+    {
+        $this->visibleInputs[$categoryId] = !($this->visibleInputs[$categoryId] ?? false);
+    }
+
     public function updateUsername() {
         $user=User::find(Auth::id());
         if ($user->id == Auth::id()) {
@@ -20,12 +32,12 @@ class Homepage extends Component
         }
         $user->save();
         return redirect(route('homepage'))->with('message', 'Username modificato correttamente');
-        // $this->reset();
+        
     }
-    public $showInput=false;
-    public function showInputs() {
-        $this->showInput=true;
-    }
+    // public $showInput=false;
+    // public function showInputs() {
+    //     $this->showInput=true;
+    // }
     public function render()
     {
         $categories = Category::all();
