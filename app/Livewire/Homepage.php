@@ -10,37 +10,120 @@ use Illuminate\Support\Facades\Auth;
 class Homepage extends Component
 {
     public $username;
-
-    public $visibleInputs = []; // array per gestire visibilità degli input
-
+    
+    public $visibleInputs = []; 
+    public $links = [];
+    public $changes = false;
+    
+    
     public function mount()
     {
         $this->visibleInputs = []; 
     }
-
+    
     public function toggleInput($categoryId)
     {
         $this->visibleInputs[$categoryId] = !($this->visibleInputs[$categoryId] ?? false);
     }
-
+    
+    public function saveLinks()
+    {
+        $rules = [];
+        $messages = [];
+        
+        foreach ($this->visibleInputs as $categoryId => $visible) {
+            if ($visible && !empty($this->links[$categoryId])) {
+                $rules["links.$categoryId"] = 'required|url|max:255';
+                $messages["links.$categoryId.required"] = 'Il campo URL è obbligatorio.';
+                $messages["links.$categoryId.url"] = 'Inserisci un URL valido per la categoria.';
+                $messages["links.$categoryId.max"] = 'L\'URL non può superare i 255 caratteri.';
+            }
+        }
+        
+        $this->validate($rules, $messages);
+        
+        foreach ($this->visibleInputs as $categoryId => $visible) {
+            if ($visible && !empty($this->links[$categoryId])) {
+                Auth::user()->links()->updateOrCreate(
+                    ['category_id' => $categoryId],
+                    ['url' => $this->links[$categoryId]]
+                );
+                
+            }
+        }
+        
+        session()->flash('message', 'Tutti i link sono stati salvati con successo!');
+    }
+    
+    public function updatedLinks()
+    {
+        $this->changes = true;
+    }
+    
+    
+    
+    // public function saveLink($categoryId)
+    // {
+    //     $rules = [
+    //         "links.$categoryId" => 'required|url|max:255',
+    //     ];
+    
+    
+    //     $messages = [
+    //         "links.{$categoryId}.required" => 'Il campo URL è obbligatorio.',
+    //         "links.{$categoryId}.url" => 'Inserisci un URL valido.',
+    //         "links.{$categoryId}.max" => 'L\'URL non può superare i 255 caratteri.',
+    //     ];
+    
+    //     $this->validate($rules, $messages);
+    
+    //     $url = $this->links[$categoryId] ?? null;
+    
+    //     if ($url) {
+    //         $link = Auth::user()->links()->updateOrCreate(
+    //             ['category_id' => $categoryId],
+    //             ['url' => $url]
+    //         );
+    
+    //         session()->flash('message', 'Link salvato con successo!');
+    //     }
+    
+    // }
+    
+    public function deleteLink($categoryId)
+    {
+        $link = Auth::user()->links()->where('category_id', $categoryId)->first();
+        
+        if ($link) {
+            $link->delete(); 
+            
+            unset($this->links[$categoryId]); // mi serve per rimuove il valore dal form Livewire
+            $this->changes = false;
+            session()->flash('message', 'Link eliminato con successo!');
+        }
+    }
+    
+    
+    
+    
     public function updateUsername() {
         $user=User::find(Auth::id());
         if ($user->id == Auth::id()) {
             $user->update([
-            'name'=>$this->username
+                'name'=>$this->username
             ]);
         }
         $user->save();
         return redirect(route('homepage'))->with('message', 'Username modificato correttamente');
         
     }
-    // public $showInput=false;
-    // public function showInputs() {
-    //     $this->showInput=true;
-    // }
+    
     public function render()
     {
         $categories = Category::all();
+        $existingLinks = Auth::user()->links()->pluck('url', 'category_id')->toArray();
+        $this->links = $this->links ?: $existingLinks;
+        
         return view('livewire.homepage', compact('categories'));
     }
 }

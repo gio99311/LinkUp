@@ -6,19 +6,24 @@
                 
             </div>
         </div>
-        <div class="row vh-100">
+        <div class="row justify-content-center">
             @auth    
                 <livewire:homepage />
             @endauth
-
+        </div>
+        <div class="row d-flex justify-content-center vh-100">
             @guest
             <div class="col-12 col-md-6 bg-color-q d-flex flex-column justify-content-center align-items-center position-relative">
                 <h2 class="display-1 fw-bold color-t">
-                    Racchiudi il tuo mondo in un solo link.
+                    Lorem ipsum dolor sit, amet 
                 </h2>
-                <h3 class="color-t ">Più di 70 milioni tra creator, influencer e aziende hanno scelto Linktree per trasformare la bio in una vetrina potente. Un unico link per connettere il tuo pubblico a tutto ciò che conta: contenuti, prodotti, collaborazioni e piattaforme social.</h3>
+                <h3 class="color-t mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus expedita reprehenderit neque distinctio et ipsa illum consectetur facere, ad quibusdam sequi, necessitatibus alias nihil consequatur ratione, ipsam laborum architecto. Libero</h3>
                 <a href="{{route('register')}}" class="button-64 position-absolute bottom-0 end-0 m-3"><span class="text text-center">Registrati</span></a>
             </div>
+            <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/008/530/024/small_2x/smartphone-cutout-file-png.png" alt="">
+            </div>
+
             @endguest
         </div>
     </div>
