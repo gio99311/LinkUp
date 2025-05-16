@@ -8,16 +8,6 @@
                 </div>
                 @endif
                 
-                <form class="card p-5 shadow" wire:submit.prevent="updateUsername">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="name" wire:model="username" placeholder="{{Auth::user()->name}}">
-                        <button class="border-0 rounded-5 mt-3 px-2 py-1 " type="submit">
-                            <i class="bi bi-pen color-b">Aggiorna</i>
-                        </button>
-                    </div>
-                </form>
-                
                 <div class="card p-5 shadow">
                     <div class="mb-3 d-flex justify-content-center">
                         <div class="col-12">
@@ -45,9 +35,6 @@
                                         <span class="text-danger small">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    {{-- <div class="col-auto">
-                                        <button type="button" class="btn btn-success" wire:click="saveLink({{ $category->id }})">Salva</button>
-                                    </div> --}}
                                     <div class="col-auto">
                                         <button type="button" class="btn btn-danger" wire:click="deleteLink({{ $category->id }})">Rimuovi</button>
                                     </div>
@@ -55,6 +42,7 @@
                                 
                                 @endif
                                 @endforeach
+                                
                                 @if($changes)
                                 <div class="mb-3 d-flex justify-content-center">
                                     <button type="button" class="btn btn-success" wire:click="saveLinks">Salva</button>

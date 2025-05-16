@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 </head>
 <body>
-    <x-navbar/>
+    <x-navbar />
 
     <div class="slot-custom">
         {{$slot}}

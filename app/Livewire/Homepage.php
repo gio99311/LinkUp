@@ -61,35 +61,6 @@ class Homepage extends Component
     }
     
     
-    
-    // public function saveLink($categoryId)
-    // {
-    //     $rules = [
-    //         "links.$categoryId" => 'required|url|max:255',
-    //     ];
-    
-    
-    //     $messages = [
-    //         "links.{$categoryId}.required" => 'Il campo URL è obbligatorio.',
-    //         "links.{$categoryId}.url" => 'Inserisci un URL valido.',
-    //         "links.{$categoryId}.max" => 'L\'URL non può superare i 255 caratteri.',
-    //     ];
-    
-    //     $this->validate($rules, $messages);
-    
-    //     $url = $this->links[$categoryId] ?? null;
-    
-    //     if ($url) {
-    //         $link = Auth::user()->links()->updateOrCreate(
-    //             ['category_id' => $categoryId],
-    //             ['url' => $url]
-    //         );
-    
-    //         session()->flash('message', 'Link salvato con successo!');
-    //     }
-    
-    // }
-    
     public function deleteLink($categoryId)
     {
         $link = Auth::user()->links()->where('category_id', $categoryId)->first();
@@ -97,26 +68,23 @@ class Homepage extends Component
         if ($link) {
             $link->delete(); 
             
-            unset($this->links[$categoryId]); // mi serve per rimuove il valore dal form Livewire
+            unset($this->links[$categoryId]); 
             $this->changes = false;
             session()->flash('message', 'Link eliminato con successo!');
         }
     }
     
-    
-    
-    
-    public function updateUsername() {
-        $user=User::find(Auth::id());
-        if ($user->id == Auth::id()) {
-            $user->update([
-                'name'=>$this->username
-            ]);
-        }
-        $user->save();
-        return redirect(route('homepage'))->with('message', 'Username modificato correttamente');
+    // public function updateUsername() {
+    //     $user=User::find(Auth::id());
+    //     if ($user->id == Auth::id()) {
+    //         $user->update([
+    //             'name'=>$this->username
+    //         ]);
+    //     }
+    //     $user->save();
+    //     return redirect(route('homepage'))->with('message', 'Username modificato correttamente');
         
-    }
+    // }
     
     public function render()
     {
