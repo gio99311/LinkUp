@@ -1,28 +1,27 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-color-a text-center">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <h1 class="display-1">Profilo di {{ $user->name }}</h1>
+    <div class="container-fluid w-100 px-0">
+        
+        <div class="row justify-content-center bg-color-a text-center py-4">
+            <div class="col-12 ">
+                <h1 class="display-1">Profilo di {{ Auth::user()->name }}</h1>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center text-center">
+            <div class="col-8 ">
+                @if (session()->has('edit_message'))
+                    <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 5000)" x-show="show" x-transition class="alert      alert-success">
+                        {{ session('edit_message') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+        
+        <div class="row justify-content-center align-items-center">
             <div class="col-12 col-md-6">
                 <livewire:user-profile />
             </div>
         </div>
         
-        
-        
-        @if($links->isEmpty())
-        <p>Nessun link disponibile</p>
-        @else
-        <div class="d-flex flex-column align-items-center">
-            @foreach ($links as $link)
-            <a href="{{ $link->url }}" target="_blank" class="btn btn-outline-primary m-2">
-                {{ $link->category->name }}
-            </a>
-            @endforeach
-        </div>
-        @endif
+
     </div>
 </x-layout>

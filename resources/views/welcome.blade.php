@@ -7,9 +7,11 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            @auth    
-                <livewire:homepage />
-            @endauth
+            <div class="col-12 col-md-6 bg-color-b">
+                @auth    
+                    <livewire:homepage />
+                @endauth
+            </div>
         </div>
         <div class="row d-flex justify-content-center vh-100">
             @guest
