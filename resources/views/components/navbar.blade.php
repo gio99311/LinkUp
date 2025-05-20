@@ -32,7 +32,6 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('users.show', Auth::user()->name)}}">Profilo</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">Logout</a></li>
                             <form action="{{ route('logout') }}" method="POST" id="logout-form">

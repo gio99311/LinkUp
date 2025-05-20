@@ -45,8 +45,10 @@
                         @endforeach
                         
                         @if($changes)
-                        <div class="mb-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-success" wire:click="saveLinks">Salva</button>
+                        <div class="mb-3 d-flex flex-column justify-content-center">
+                            <button type="button" class="bg-color-t text-success border-0 rounded-5 mt-3 px-2 py-1 my-1 w-100" wire:click="saveLinks">Salva</button>
+                            <a class="bg-light border-0 rounded-5 mt-3 px-2 py-1 my-1 w-100 text-decoration-none text-center color-q" href="{{route('users.publicUser', Auth::user()->name)}}">
+                            <i class="bi bi-view-stacked"> Vedi anteprima del tuo profilo</i></a>
                         </div>
                         @endif
                     </div>

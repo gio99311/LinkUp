@@ -19,11 +19,9 @@ class UserProfile extends Component
         $user = Auth::user();
         $this->username = Auth::user()->name;
         $this->bio = Auth::user()->bio;
-
-        // Precarica i link già salvati (category_id => url)
+        
         $this->links = $user->links()->pluck('url', 'category_id')->toArray();
 
-        // Rendi visibili solo i campi che hanno link salvati
         foreach ($this->links as $categoryId => $url) {
             $this->visibleInputs[$categoryId] = true;
         }
@@ -48,7 +46,6 @@ class UserProfile extends Component
             'bio' => $this->bio,
         ]);
 
-        // Validazione link visibili
         foreach ($this->visibleInputs as $categoryId => $visible) {
             if ($visible && !empty($this->links[$categoryId])) {
                 $this->validate([
@@ -57,7 +54,6 @@ class UserProfile extends Component
             }
         }
 
-        // Salvataggio link
         foreach ($this->visibleInputs as $categoryId => $visible) {
             if ($visible && !empty($this->links[$categoryId])) {
                 $user->links()->updateOrCreate(
@@ -68,7 +64,9 @@ class UserProfile extends Component
         }
         
         $user->save();
-        return redirect(route('users.show', Auth::user()->name))->with('edit_message', 'Profilo aggiornato con successo!');
+        $this->dispatch('profile-updated');
+
+        return redirect(route('users.show', Auth::user()->name));
         
     }
 
@@ -87,7 +85,7 @@ class UserProfile extends Component
     
     public function render()
     {
-        $categories = Category::all(); // per visualizzare icone e nomi social
+        $categories = Category::all();
 
         return view('livewire.user-profile', compact('categories'));
     }

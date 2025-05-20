@@ -18,4 +18,20 @@ function copyPageUrl() {
 
 window.copyPageUrl = copyPageUrl;
 
+window.addEventListener('profile-updated', () => {
+    const modalElement = document.getElementById('profileUpdatedModal');
+    if (modalElement) {
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+        setTimeout(() => {
+            modal.hide();
+        }, 8000);
+    }
+});
+
+
+
+
+
+
 
