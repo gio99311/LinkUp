@@ -64,9 +64,8 @@ class UserProfile extends Component
         }
         
         $user->save();
-        $this->dispatch('profile-updated');
 
-        return redirect(route('users.show', Auth::user()->name));
+        return redirect(route('users.publicUser', Auth::user()->name));
         
     }
 

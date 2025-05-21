@@ -52,7 +52,8 @@ class Homepage extends Component
             }
         }
         
-        session()->flash('message', 'Tutti i link sono stati salvati con successo!');
+        $this->dispatch('profile-updated');
+        // session()->flash('message', 'Tutti i link sono stati salvati con successo!');
     }
     
     public function updatedLinks()

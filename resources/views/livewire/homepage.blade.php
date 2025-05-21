@@ -1,10 +1,10 @@
 <div>
     <div class="container-fluid p-5">
-        @if (session()->has('message'))
+        {{-- @if (session()->has('message'))
             <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 5000)" x-show="show" x-transition class="alert      alert-success">
                 {{ session('message') }}
             </div>
-        @endif
+        @endif --}}
     
         <div class="row justify-content-center align-items-center card p-md-5 shadow">
             <div class="col-12 mb-3 d-flex flex-column justify-content-center">

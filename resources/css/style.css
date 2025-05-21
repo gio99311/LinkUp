@@ -128,3 +128,13 @@
   padding: 10px;
   box-shadow: 3px 3px var(--color-q);
 }
+
+.imgCust{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
