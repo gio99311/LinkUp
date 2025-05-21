@@ -42,11 +42,11 @@ LinkUp è un'applicazione web realizzata con **Laravel 12**, **Livewire** e **Bo
 ## 📸 Screenshot
 
 ### 📱 Homepage
-![Homepage](public/screenshots/homepage-auth.png)
+![Homepage](screenshots/homepage-auth.png)
 
 ### 🔧 Pagina Profilo Utente
-![Profilo Utente](public/screenshots/private-profile.png)
+![Profilo Utente](screenshots/private-profile.png)
 
 ### 👁️‍🗨️ Pagina Profilo Pubblico
-![Profilo Pubblico](public/screenshots/public-profile.png)
+![Profilo Pubblico](screenshots/public-profile.png)
 
